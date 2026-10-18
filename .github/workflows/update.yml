@@ -30,9 +30,12 @@ jobs:
       - run: python build.py
       - name: Enregistrer le cache de coordonnées et les données lues
         run: |
+          # last_run.txt ne change qu'une fois par mois : ce commit mensuel évite que
+          # GitHub désactive le planning après 60 jours sans activité sur le dépôt.
+          date -u +%Y-%m > last_run.txt
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add geocache.json data.json
+          git add geocache.json data.json last_run.txt
           git diff --cached --quiet || (git commit -m "Mise à jour des données du wiki" && git push)
       - uses: actions/upload-pages-artifact@v3
         with:
