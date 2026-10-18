@@ -22,6 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -36,7 +38,8 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
           git add geocache.json data.json last_run.txt
-          git diff --cached --quiet || (git commit -m "Mise à jour des données du wiki" && git push)
+          # si un autre commit est arrivé entre-temps : on le récupère d'abord (nos données, plus récentes, priment)
+          git diff --cached --quiet || (git commit -m "Mise à jour des données du wiki" && git pull --rebase -X theirs origin main && git push)
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
