@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><title>Pirlouette – statistiques des prestations</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{--bg:#faf8f4;--fg:#2b2622;--mu:#7a6f64;--cd:#fff;--bd:#e4ddd2;--a:#c2410c;--b:#0f766e;--p:#7c3aed;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1917;--fg:#f1ebe3;--mu:#a89c8e;--cd:#292422;--bd:#3d3631;--a:#fb923c;--b:#2dd4bf;--p:#c4b5fd;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1c1917;--fg:#f1ebe3;--mu:#a89c8e;--cd:#292422;--bd:#3d3631;--a:#fb923c;--b:#2dd4bf;--p:#c4b5fd;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:980px;margin:auto;padding:20px 16px 40px}
+h1{font-size:1.5rem;margin:0 0 2px}h2{font-size:1.05rem;margin:0 0 10px}
+.sub{color:var(--mu);margin:0 0 16px}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:12px;padding:14px;margin-bottom:14px}
+.ctl{display:flex;flex-wrap:wrap;gap:14px;align-items:end}
+label{display:flex;flex-direction:column;font-size:.8rem;color:var(--mu);gap:3px}
+label.ck{flex-direction:row;align-items:center;gap:6px;color:var(--fg);font-size:.9rem}
+input,select,button{font:inherit;padding:6px 8px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--fg)}
+button{cursor:pointer}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.kp div{text-align:center}.kp b{display:block;font-size:1.7rem}.kp span{font-size:.8rem;color:var(--mu)}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px}
+.ov{overflow-x:auto}
+svg{width:100%;height:auto;display:block;background:var(--bg);border-radius:8px}
+svg text{fill:var(--fg);font-size:9px;pointer-events:none}
+table{border-collapse:collapse;width:100%;font-size:.9rem}td,th{padding:4px 6px;border-bottom:1px solid var(--bd);text-align:left}td:nth-child(n+2),th:nth-child(n+2){text-align:right}
+.cv{position:relative;height:300px}
+small{color:var(--mu)}
+</style></head><body><main>
+<h1>Pirlouette – statistiques des prestations</h1>
+<p class="sub">Bals folk, concerts/animations et soirées privées recensés sur le wiki de Pirlouette. Données au __UPDATED__.</p>
+<div class="card ctl">
+<label>Du<input type="date" id="d1" value="2005-01-01"></label>
+<label>Au<input type="date" id="d2" value="2026-12-31"></label>
+<label>Regroupement<select id="g"><option value="y">Par année</option><option value="m">Par mois</option></select></label>
+<label class="ck"><input type="checkbox" id="cb" checked><span class="sw" style="background:var(--a)"></span>Bals</label>
+<label class="ck"><input type="checkbox" id="cc" checked><span class="sw" style="background:var(--b)"></span>Concerts &amp; animations</label>
+<label class="ck"><input type="checkbox" id="cp" checked><span class="sw" style="background:var(--p)"></span>Soirées privées</label>
+</div>
+<div class="card kp"><div><b id="k1"></b><span>prestations</span></div><div><b id="k2" style="color:var(--a)"></b><span>bals</span></div><div><b id="k3" style="color:var(--b)"></b><span>concerts &amp; animations</span></div><div><b id="k5" style="color:var(--p)"></b><span>soirées privées</span></div><div><b id="k4"></b><span>lieux différents</span></div></div>
+<div class="card"><h2>Évolution dans le temps</h2><div class="ov"><div class="cv" id="cv"><canvas id="ch"></canvas></div></div></div>
+<div class="card"><h2 style="margin-bottom:2px">Où Pirlouette a joué dans le Nord et le Pas-de-Calais</h2><p id="mt" class="sub" style="margin:0 0 8px;font-size:.85rem"></p>
+<div class="ctl" style="margin-bottom:6px"><button id="zi">+</button><button id="zo">−</button><button id="zr">Réinitialiser</button><small>Molette ou pincement : zoom · glisser : déplacer · clic sur un point : détail</small></div><small id="hs"></small>
+<svg id="map" viewBox="0 0 632 401" style="max-width:780px;margin:8px auto;touch-action:none;cursor:grab;user-select:none"></svg>
+<div id="lg" style="display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;font-size:.82rem;margin:6px 0;padding:8px 10px;border:1px solid var(--bd);border-radius:8px"></div><div id="dt" style="margin:6px 0;font-size:.9rem"></div><small>Nord et Pas-de-Calais colorés selon le nombre de prestations ; chaque point est une commune (taille proportionnelle, survol pour le détail). Contours simplifiés dessinés à la main : frontières approximatives. Les lieux en Belgique apparaissent hors du fond coloré.</small></div>
+<div class="card"><h2>Lieux les plus fréquents</h2><table id="tb"></table></div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+// [commune, lat, lon, "b|a + AAMMJJ"] b=bal, a=concert/animation
+const D=__DATA__;
+const E=[];D.forEach(([n,la,lo,s])=>s.split(" ").forEach(t=>E.push({n,la,lo,t:t[0],d:`${2000+ +t.slice(1,3)}-${t.slice(3,5)}-${t.slice(5,7)}`})));
+const r=a=>a.slice().reverse(),
+CN=[[51.0,2.1],[51.05,2.37],[51.07,2.54]],
+BEL=[[50.99,2.6],[50.88,2.6],[50.83,2.64],[50.78,2.74],[50.74,2.82],[50.73,2.9],[50.78,3.0],[50.8,3.12],[50.74,3.2],[50.69,3.28],[50.6,3.3],[50.55,3.4],[50.5,3.5],[50.44,3.62],[50.37,3.75],[50.33,3.85],[50.3,4.0],[50.3,4.15],[50.15,4.2],[50.05,4.22],[50.02,4.23]],
+NA=[[50.0,3.2],[50.0,3.35],[50.0,3.6],[50.0,3.9],[50.02,4.23]],
+NP=[[50.04,3.03],[50.3,2.98],[50.4,2.98],[50.46,3.03],[50.5,2.98],[50.51,2.9],[50.53,2.88],[50.57,2.8],[50.665,2.8],[50.675,2.7],[50.63,2.52],[50.7,2.42],[50.8,2.37],[50.88,2.28],[51.0,2.1]],
+CP=[[51.0,2.1],[50.96,1.85],[50.87,1.58],[50.73,1.58],[50.52,1.58],[50.37,1.57]],
+SB=[[50.37,1.57],[50.32,1.7],[50.25,2.0],[50.15,2.35],[50.12,2.5],[50.1,2.7],[50.07,2.85],[50.04,3.03]],
+CS=[[50.37,1.57],[50.25,1.56],[50.18,1.5],[50.1,1.45],[50.06,1.38],[49.93,1.63],[49.77,1.75]],
+SO=[[49.73,1.78],[49.7,2.0],[49.68,2.3],[49.65,2.55],[49.65,2.78],[49.7,3.02]],
+SA=[[49.7,3.02],[49.76,3.14],[49.87,3.15],[50.0,3.2]],
+OA=[[49.7,3.02],[49.55,3.1],[49.4,3.07],[49.28,3.05],[49.18,3.0],[49.1,3.0]],
+OS=[[49.1,3.0],[49.1,2.85],[49.08,2.6],[49.1,2.45],[49.1,2.2],[49.15,2.0],[49.25,1.9],[49.4,1.75],[49.55,1.75],[49.73,1.78]],
+AO=[[49.1,3.0],[49.0,3.15],[48.95,3.35],[48.95,3.5],[49.05,3.7],[49.15,3.75],[49.3,3.8],[49.4,3.95],[49.5,4.05],[49.65,4.2],[49.8,4.25],[49.95,4.2],[50.02,4.23]],
+DP={"Nord":[...CN,...BEL,...r(NA),...NP.slice(0,-1)],"Pas-de-Calais":[...CP,...SB.slice(1),...NP.slice(1,-1)],"Somme":[...CS,...SO,...SA.slice(1),[50.04,3.03],...r(SB).slice(1)],"Aisne":[...SA,...NA.slice(1),...r(AO).slice(1),...r(OA).slice(1)],"Oise":[...SO,...OA.slice(1),...OS.slice(1)]};
+const pip=(la,lo,P)=>{let c=false;for(let i=0,j=P.length-1;i<P.length;j=i++){const[a,b]=P[i],[p,q]=P[j];if((a>la)!=(p>la)&&lo<(q-b)*(la-a)/(p-a)+b)c=!c}return c};
+E.forEach(e=>{e.dp=null;if(e.la!=null)for(const k in DP)if(pip(e.la,e.lo,DP[k]))e.dp=k});
+const $=i=>document.getElementById(i),css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+let chart;
+function sel(){const a=$("d1").value||"0000",b=$("d2").value||"9999",ub=$("cb").checked,uc=$("cc").checked,up=$("cp").checked;
+return E.filter(e=>e.d>=a&&e.d<=b&&((e.t=="b"&&ub)||(e.t=="a"&&uc)||(e.t=="p"&&up)))}
+function render(){const S=sel(),g=$("g").value,B=S.filter(e=>e.t=="b").length,P=S.filter(e=>e.t=="p").length,C=S.length-B-P;
+$("k1").textContent=S.length;$("k2").textContent=B;$("k3").textContent=C;$("k4").textContent=new Set(S.filter(e=>e.la!=null).map(e=>e.n)).size;$("k5").textContent=P;
+// série temporelle
+const a=$("d1").value||"2005-01-01",b=$("d2").value||"2026-12-31",k=e=>g=="y"?e.d.slice(0,4):e.d.slice(0,7);
+const lab=[];let y=+a.slice(0,4),m=+a.slice(5,7);const ye=+b.slice(0,4),me=+b.slice(5,7);
+while(y<ye||(y==ye&&m<=me)){const p=g=="y"?""+y:y+"-"+String(m).padStart(2,"0");if(!lab.length||lab[lab.length-1]!=p)lab.push(p);m++;if(m>12){m=1;y++}}
+const cnt=t=>lab.map(l=>S.filter(e=>e.t==t&&k(e)==l).length);
+const cfg={type:"bar",data:{labels:lab,datasets:[{label:"Bals",data:cnt("b"),backgroundColor:css("--a")},{label:"Concerts & animations",data:cnt("a"),backgroundColor:css("--b")},{label:"Soirées privées",data:cnt("p"),backgroundColor:css("--p")}]},
+options:{responsive:true,maintainAspectRatio:false,scales:{x:{stacked:true,ticks:{color:css("--mu"),maxRotation:60,autoSkip:true},grid:{display:false}},y:{stacked:true,beginAtZero:true,ticks:{precision:0,color:css("--mu")},grid:{color:css("--bd")}}},plugins:{legend:{labels:{color:css("--fg")}}}}};
+if(chart)chart.destroy();chart=new Chart($("ch"),cfg);
+drawMap(S);
+// top lieux
+const c={};S.forEach(e=>{(c[e.n]=c[e.n]||{b:0,a:0,p:0})[e.t]++});
+const r=Object.entries(c).sort((x,y)=>y[1].b+y[1].a+y[1].p-x[1].b-x[1].a-x[1].p).slice(0,12);
+$("tb").innerHTML="<tr><th>Lieu</th><th>Bals</th><th>Concerts</th><th>Privées</th><th>Total</th></tr>"+r.map(([n,v])=>`<tr><td>${n}</td><td>${v.b}</td><td>${v.a}</td><td>${v.p}</td><td><b>${v.b+v.a+v.p}</b></td></tr>`).join("")}
+function drawMap(S){LS=S;const K=340,P=(la,lo)=>[(((lo-1.5)*.643*K+10)*T.k+T.x).toFixed(1),(((51.1-la)*K+10)*T.k+T.y).toFixed(1)],pt=a=>a.map(p=>P(...p).join(",")).join(" ");
+const dc={},cm={};let out=0;
+S.forEach(e=>{if(e.la==null||e.la<49.98||e.la>51.1||e.lo<1.5||e.lo>4.3||(!e.dp&&e.la<50.4)){out++;return}
+if(e.dp=="Nord"||e.dp=="Pas-de-Calais")dc[e.dp]=(dc[e.dp]||0)+1;const c=cm[e.n]=cm[e.n]||{n:0,la:e.la,lo:e.lo};c.n++});
+const mx=Math.max(1,...Object.values(dc)),col=css("--a");let s="";
+for(const k of["Nord","Pas-de-Calais"])s+=`<polygon points="${pt(DP[k])}" fill="${col}" fill-opacity="${(.08+.8*(dc[k]||0)/mx).toFixed(2)}" stroke="${css("--mu")}" stroke-width="1" stroke-linejoin="round"><title>${k} : ${dc[k]||0}</title></polygon>`;
+const LB={"Nord":[50.2,3.6],"Pas-de-Calais":[50.3,2.15]};
+for(const k in LB){const[x,y]=P(...LB[k]);s+=`<text x="${x}" y="${y}" text-anchor="middle" style="font-size:13px;font-weight:600">${k}</text><text x="${x}" y="${+y+15}" text-anchor="middle" style="font-size:12px">${dc[k]||0}</text>`}
+const L=Object.entries(cm).sort((a,b)=>b[1].n-a[1].n),m2=L.length?L[0][1].n:1;
+let t="";L.forEach(([n,c],i)=>{const[x,y]=P(c.la,c.lo);s+=`<circle data-n="${n}" style="cursor:pointer" cx="${x}" cy="${y}" r="${(5+10*Math.sqrt(c.n/m2)).toFixed(1)}" fill="${css("--b")}" fill-opacity=".7" stroke="${n==SEL?css("--fg"):css("--bg")}" stroke-width="${n==SEL?2:.8}"><title>${n} : ${c.n}</title></circle>`;t+=`<text x="${x}" y="${+y+3}" text-anchor="middle" style="font-size:8px;font-weight:700;fill:var(--bg)">${c.n}</text>`;if(i<8||T.k>=2.5)t+=`<text x="${+x+12}" y="${+y-8}">${n}</text>`});s+=t;
+$("map").innerHTML=s;showDt();legend(mx,m2);mapTitle(S.length-out);$("hs").textContent=out?`${out} prestation(s) hors de la carte (autres régions, pays ou lieu inconnu)`:""}
+let LS=[],SEL=null,T={k:1,x:0,y:0},raf=0;
+const redraw=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>drawMap(LS))};
+const svgPt=e=>{const r=$("map").getBoundingClientRect();return[(e.clientX-r.left)*632/r.width,(e.clientY-r.top)*401/r.height]};
+function zoomAt(f,cx,cy){const k=Math.min(14,Math.max(1,T.k*f)),q=k/T.k;T.x=cx-(cx-T.x)*q;T.y=cy-(cy-T.y)*q;T.k=k;if(k==1){T.x=0;T.y=0}redraw()}
+function mapTitle(n){const f=v=>v.split("-").reverse().join("/"),ty=[["cb","bals"],["cc","concerts & animations"],["cp","soirées privées"]].filter(t=>$(t[0]).checked).map(t=>t[1]);
+$("mt").textContent=`${n} prestation(s) localisée(s) du ${f($("d1").value||"2005-01-01")} au ${f($("d2").value||"2026-12-31")} · ${ty.length?ty.join(", "):"aucun type sélectionné"}`}
+function legend(mx,m2){const R=n=>5+10*Math.sqrt(n/m2),ns=[...new Set([1,Math.max(1,Math.round(m2/4)),m2])];let x=2,sv="";
+ns.forEach(n=>{const r=R(n);x+=r;sv+=`<circle cx="${x.toFixed(1)}" cy="16" r="${r.toFixed(1)}" fill="var(--b)" fill-opacity=".7"/><text x="${x.toFixed(1)}" y="19" text-anchor="middle" style="font-size:8px;font-weight:700;fill:var(--bg)">${n}</text>`;x+=r+6});
+$("lg").innerHTML=`<div><b>Départements</b> (total)<br>0 <span style="display:inline-block;vertical-align:middle;width:110px;height:10px;border:1px solid var(--bd);border-radius:3px;background:linear-gradient(90deg,color-mix(in srgb,var(--a) 8%,transparent),color-mix(in srgb,var(--a) 88%,transparent))"></span> ${mx}</div>`+
+`<div style="display:flex;align-items:center;gap:8px"><span><b>Communes</b><br>prestations</span><svg viewBox="0 0 ${x.toFixed(0)} 32" style="width:${x.toFixed(0)}px;height:32px;background:none;border-radius:0">${sv}</svg></div>`+
+`<div><span style="display:inline-block;vertical-align:middle;width:14px;height:14px;border-radius:50%;border:2px solid var(--fg);background:var(--b);opacity:.7"></span> commune sélectionnée</div><div><span style="display:inline-block;vertical-align:middle;width:14px;height:10px;border:1px dashed var(--mu)"></span> hors départements : Belgique</div>`}
+function showDt(){const el=$("dt");if(!SEL){el.innerHTML="<small>Cliquez sur un point pour voir le détail des prestations de la commune.</small>";return}
+const L=LS.filter(e=>e.n==SEL).sort((a,b)=>b.d<a.d?-1:1),nm={b:"Bal folk",a:"Concert / animation",p:"Soirée privée"},cl={b:"--a",a:"--b",p:"--p"};
+el.innerHTML=`<b>${SEL}</b> — ${L.length} prestation(s)<div style="max-height:150px;overflow:auto;margin-top:4px">`+L.map(e=>`<div><span class="sw" style="background:var(${cl[e.t]})"></span>${e.d.split("-").reverse().join("/")} · ${nm[e.t]}</div>`).join("")+"</div>"}
+$("map").addEventListener("wheel",e=>{e.preventDefault();const[x,y]=svgPt(e);zoomAt(e.deltaY<0?1.25:.8,x,y)},{passive:false});
+const ptr=new Map(),dist=()=>{const a=[...ptr.values()];return Math.hypot(a[0][0]-a[1][0],a[0][1]-a[1][1])};let dn=null,pd=0;
+$("map").addEventListener("pointerdown",e=>{ptr.set(e.pointerId,[e.clientX,e.clientY]);dn={n:e.target.dataset&&e.target.dataset.n,m:0};if(ptr.size==2)pd=dist()});
+window.addEventListener("pointermove",e=>{if(!ptr.has(e.pointerId))return;const o=ptr.get(e.pointerId),rc=$("map").getBoundingClientRect(),sc=632/rc.width;ptr.set(e.pointerId,[e.clientX,e.clientY]);
+if(ptr.size==2){const d=dist(),a=[...ptr.values()];if(pd)zoomAt(d/pd,((a[0][0]+a[1][0])/2-rc.left)*sc,((a[0][1]+a[1][1])/2-rc.top)*sc);pd=d;if(dn)dn.m=99}
+else if(dn){const dx=e.clientX-o[0],dy=e.clientY-o[1];dn.m+=Math.abs(dx)+Math.abs(dy);if(dn.m>6&&T.k>1){T.x+=dx*sc;T.y+=dy*sc;redraw()}}});
+const up=e=>{if(!ptr.has(e.pointerId))return;ptr.delete(e.pointerId);if(dn&&ptr.size==0&&dn.m<=6&&dn.n){SEL=dn.n==SEL?null:dn.n;redraw()}if(ptr.size==0)dn=null;pd=0};
+window.addEventListener("pointerup",up);window.addEventListener("pointercancel",up);
+$("zi").onclick=()=>zoomAt(1.5,316,200);$("zo").onclick=()=>zoomAt(1/1.5,316,200);$("zr").onclick=()=>{T.k=1;T.x=T.y=0;SEL=null;redraw()};
+["d1","d2","g","cb","cc","cp"].forEach(i=>$(i).addEventListener("input",render));
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",render);
+render();
+</script></body></html>

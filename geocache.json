@@ -1,0 +1,652 @@
+{
+ "annay": {
+  "lat": 50.45,
+  "lon": 2.85,
+  "name": "Annay"
+ },
+ "armentieres": {
+  "lat": 50.69,
+  "lon": 2.88,
+  "name": "Armentières"
+ },
+ "aubers": {
+  "lat": 50.6,
+  "lon": 2.84,
+  "name": "Aubers"
+ },
+ "aveyron": {
+  "lat": 43.88,
+  "lon": 2.78,
+  "name": "Aveyron (Rance)"
+ },
+ "bachy": {
+  "lat": 50.58,
+  "lon": 3.25,
+  "name": "Bachy"
+ },
+ "bailleul": {
+  "lat": 50.74,
+  "lon": 2.73,
+  "name": "Bailleul"
+ },
+ "bailleul sir berthoult": {
+  "lat": 50.35,
+  "lon": 2.77,
+  "name": "Bailleul-sir-Berthoult"
+ },
+ "baisieux": {
+  "lat": 50.6,
+  "lon": 3.25,
+  "name": "Baisieux"
+ },
+ "bavay": {
+  "lat": 50.3,
+  "lon": 3.8,
+  "name": "Bavay"
+ },
+ "bavinchove": {
+  "lat": 50.78,
+  "lon": 2.45,
+  "name": "Bavinchove"
+ },
+ "beaucamps ligny": {
+  "lat": 50.6,
+  "lon": 2.85,
+  "name": "Beaucamps-Ligny"
+ },
+ "bergerac": {
+  "lat": 44.85,
+  "lon": 0.48,
+  "name": "Bergerac"
+ },
+ "boulogne sur mer": {
+  "lat": 50.73,
+  "lon": 1.61,
+  "name": "Boulogne-sur-Mer"
+ },
+ "bourghelles": {
+  "lat": 50.55,
+  "lon": 3.18,
+  "name": "Bourghelles"
+ },
+ "bousbecque": {
+  "lat": 50.76,
+  "lon": 3.07,
+  "name": "Bousbecque"
+ },
+ "bouvines": {
+  "lat": 50.58,
+  "lon": 3.18,
+  "name": "Bouvines"
+ },
+ "brighton|GB": {
+  "lat": 50.82,
+  "lon": -0.14,
+  "name": "Brighton (GB)"
+ },
+ "bruay la buissiere": {
+  "lat": 50.48,
+  "lon": 2.55,
+  "name": "Bruay-la-Buissière"
+ },
+ "bruges|B": {
+  "lat": 51.21,
+  "lon": 3.22,
+  "name": "Bruges (B)"
+ },
+ "bruille les marchiennes": {
+  "lat": 50.4,
+  "lon": 3.3,
+  "name": "Bruille-lez-Marchiennes"
+ },
+ "bugnicourt": {
+  "lat": 50.27,
+  "lon": 3.15,
+  "name": "Bugnicourt"
+ },
+ "cambrin": {
+  "lat": 50.52,
+  "lon": 2.68,
+  "name": "Cambrin"
+ },
+ "camphin en pevele": {
+  "lat": 50.5,
+  "lon": 3.16,
+  "name": "Camphin-en-Pévèle"
+ },
+ "carnin": {
+  "lat": 50.52,
+  "lon": 2.92,
+  "name": "Carnin"
+ },
+ "cassel": {
+  "lat": 50.8,
+  "lon": 2.49,
+  "name": "Cassel"
+ },
+ "chartres": {
+  "lat": 48.45,
+  "lon": 1.49,
+  "name": "Chartres"
+ },
+ "chatillon en diois": {
+  "lat": 44.69,
+  "lon": 5.49,
+  "name": "Châtillon-en-Diois"
+ },
+ "clairmarais": {
+  "lat": 50.8,
+  "lon": 2.34,
+  "name": "Clairmarais"
+ },
+ "comines": {
+  "lat": 50.76,
+  "lon": 3.01,
+  "name": "Comines"
+ },
+ "courtrai|B": {
+  "lat": 50.83,
+  "lon": 3.27,
+  "name": "Courtrai (B)"
+ },
+ "crecy en ponthieu": {
+  "lat": 50.25,
+  "lon": 1.88,
+  "name": "Crécy-en-Ponthieu"
+ },
+ "darbres": {
+  "lat": 44.62,
+  "lon": 4.5,
+  "name": "Darbres"
+ },
+ "denain": {
+  "lat": 50.33,
+  "lon": 3.39,
+  "name": "Denain"
+ },
+ "dordogne": {
+  "lat": 45.18,
+  "lon": 0.72,
+  "name": "Dordogne"
+ },
+ "douai": {
+  "lat": 50.37,
+  "lon": 3.08,
+  "name": "Douai"
+ },
+ "douchy les mines": {
+  "lat": 50.3,
+  "lon": 3.4,
+  "name": "Douchy-les-Mines"
+ },
+ "douville": {
+  "lat": 45.0,
+  "lon": 0.58,
+  "name": "Douville"
+ },
+ "ergny": {
+  "lat": 50.55,
+  "lon": 1.88,
+  "name": "Ergny"
+ },
+ "etreaupont": {
+  "lat": 49.9,
+  "lon": 3.95,
+  "name": "Étréaupont"
+ },
+ "faches thumesnil": {
+  "lat": 50.58,
+  "lon": 3.07,
+  "name": "Faches-Thumesnil"
+ },
+ "faumont": {
+  "lat": 50.43,
+  "lon": 3.15,
+  "name": "Faumont"
+ },
+ "festubert": {
+  "lat": 50.53,
+  "lon": 2.73,
+  "name": "Festubert"
+ },
+ "flines les mortagne": {
+  "lat": 50.48,
+  "lon": 3.46,
+  "name": "Flines-lez-Mortagne"
+ },
+ "fournes en weppes": {
+  "lat": 50.58,
+  "lon": 2.88,
+  "name": "Fournes-en-Weppes"
+ },
+ "fresnes sur escaut": {
+  "lat": 50.4,
+  "lon": 3.6,
+  "name": "Fresnes-sur-Escaut"
+ },
+ "genech": {
+  "lat": 50.55,
+  "lon": 3.18,
+  "name": "Genech"
+ },
+ "givenchy en gohelle": {
+  "lat": 50.4,
+  "lon": 2.76,
+  "name": "Givenchy-en-Gohelle"
+ },
+ "godewaersvelde": {
+  "lat": 50.79,
+  "lon": 2.64,
+  "name": "Godewaersvelde"
+ },
+ "gondecourt": {
+  "lat": 50.53,
+  "lon": 2.97,
+  "name": "Gondecourt"
+ },
+ "gravelines": {
+  "lat": 51.0,
+  "lon": 2.13,
+  "name": "Gravelines"
+ },
+ "halluin": {
+  "lat": 50.78,
+  "lon": 3.12,
+  "name": "Halluin"
+ },
+ "hazebrouck": {
+  "lat": 50.72,
+  "lon": 2.54,
+  "name": "Hazebrouck"
+ },
+ "hellemmes": {
+  "lat": 50.63,
+  "lon": 3.11,
+  "name": "Hellemmes"
+ },
+ "henin beaumont": {
+  "lat": 50.42,
+  "lon": 2.95,
+  "name": "Hénin-Beaumont"
+ },
+ "hondeghem": {
+  "lat": 50.74,
+  "lon": 2.45,
+  "name": "Hondeghem"
+ },
+ "houplin ancoisne": {
+  "lat": 50.57,
+  "lon": 2.99,
+  "name": "Houplin-Ancoisne"
+ },
+ "la chapelle d armentieres": {
+  "lat": 50.65,
+  "lon": 2.89,
+  "name": "La Chapelle-d’Armentières"
+ },
+ "la creche": {
+  "lat": 50.7,
+  "lon": 2.77,
+  "name": "La Crèche"
+ },
+ "la croix du bac": {
+  "lat": 50.73,
+  "lon": 2.73,
+  "name": "La Croix-du-Bac"
+ },
+ "lambersart": {
+  "lat": 50.65,
+  "lon": 3.03,
+  "name": "Lambersart"
+ },
+ "lambres les douai": {
+  "lat": 50.38,
+  "lon": 3.1,
+  "name": "Lambres-lez-Douai"
+ },
+ "le doulieu": {
+  "lat": 50.69,
+  "lon": 2.69,
+  "name": "Le Doulieu"
+ },
+ "lecelles": {
+  "lat": 50.47,
+  "lon": 3.43,
+  "name": "Lecelles"
+ },
+ "leers": {
+  "lat": 50.68,
+  "lon": 3.24,
+  "name": "Leers"
+ },
+ "leffrinckoucke": {
+  "lat": 51.04,
+  "lon": 2.43,
+  "name": "Leffrinckoucke"
+ },
+ "lennik|B": {
+  "lat": 50.81,
+  "lon": 4.15,
+  "name": "Lennik (B)"
+ },
+ "lesquin": {
+  "lat": 50.59,
+  "lon": 3.11,
+  "name": "Lesquin"
+ },
+ "lestrem": {
+  "lat": 50.6,
+  "lon": 2.65,
+  "name": "Lestrem"
+ },
+ "lieu non precise": {
+  "lat": null,
+  "lon": null,
+  "name": "Lieu non précisé"
+ },
+ "lievin": {
+  "lat": 50.42,
+  "lon": 2.78,
+  "name": "Liévin"
+ },
+ "lille": {
+  "lat": 50.63,
+  "lon": 3.06,
+  "name": "Lille"
+ },
+ "lillers": {
+  "lat": 50.56,
+  "lon": 2.48,
+  "name": "Lillers"
+ },
+ "lompret": {
+  "lat": 50.65,
+  "lon": 2.98,
+  "name": "Lompret"
+ },
+ "loos": {
+  "lat": 50.61,
+  "lon": 3.02,
+  "name": "Loos"
+ },
+ "lupiac": {
+  "lat": 43.76,
+  "lon": 0.26,
+  "name": "Lupiac"
+ },
+ "marchiennes": {
+  "lat": 50.41,
+  "lon": 3.27,
+  "name": "Marchiennes"
+ },
+ "marcq en baroeul": {
+  "lat": 50.67,
+  "lon": 3.09,
+  "name": "Marcq-en-Barœul"
+ },
+ "marquette en ostrevant": {
+  "lat": 50.3,
+  "lon": 3.2,
+  "name": "Marquette-en-Ostrevant"
+ },
+ "marquillies": {
+  "lat": 50.55,
+  "lon": 2.88,
+  "name": "Marquillies"
+ },
+ "meurchin": {
+  "lat": 50.5,
+  "lon": 2.88,
+  "name": "Meurchin"
+ },
+ "mingoval": {
+  "lat": 50.4,
+  "lon": 2.6,
+  "name": "Mingoval"
+ },
+ "mons en baroeul": {
+  "lat": 50.64,
+  "lon": 3.11,
+  "name": "Mons-en-Barœul"
+ },
+ "neuville en ferrain": {
+  "lat": 50.75,
+  "lon": 3.16,
+  "name": "Neuville-en-Ferrain"
+ },
+ "nieppe": {
+  "lat": 50.7,
+  "lon": 2.83,
+  "name": "Nieppe"
+ },
+ "noeux les mines": {
+  "lat": 50.48,
+  "lon": 2.66,
+  "name": "Noeux-les-Mines"
+ },
+ "norrent fontes": {
+  "lat": 50.57,
+  "lon": 2.43,
+  "name": "Norrent-Fontes"
+ },
+ "noyelle sous lens": {
+  "lat": 50.42,
+  "lon": 2.89,
+  "name": "Noyelle-sous-Lens"
+ },
+ "perenchies": {
+  "lat": 50.62,
+  "lon": 2.97,
+  "name": "Pérenchies"
+ },
+ "premesques": {
+  "lat": 50.67,
+  "lon": 2.98,
+  "name": "Prémesques"
+ },
+ "quesnoy sur deule": {
+  "lat": 50.7,
+  "lon": 3.04,
+  "name": "Quesnoy-sur-Deûle"
+ },
+ "raismes": {
+  "lat": 50.38,
+  "lon": 3.48,
+  "name": "Raismes"
+ },
+ "richebourg": {
+  "lat": 50.54,
+  "lon": 2.69,
+  "name": "Richebourg"
+ },
+ "rombies et marchipont": {
+  "lat": 50.33,
+  "lon": 3.67,
+  "name": "Rombies-et-Marchipont"
+ },
+ "ronchin": {
+  "lat": 50.6,
+  "lon": 3.08,
+  "name": "Ronchin"
+ },
+ "rosult": {
+  "lat": 50.46,
+  "lon": 3.43,
+  "name": "Rosult"
+ },
+ "roubaix": {
+  "lat": 50.69,
+  "lon": 3.17,
+  "name": "Roubaix"
+ },
+ "roulers|B": {
+  "lat": 50.95,
+  "lon": 3.13,
+  "name": "Roulers (B)"
+ },
+ "rousies": {
+  "lat": 50.28,
+  "lon": 3.85,
+  "name": "Rousies"
+ },
+ "sailly sur la lys": {
+  "lat": 50.65,
+  "lon": 2.77,
+  "name": "Sailly-sur-la-Lys"
+ },
+ "sainghin en melantois": {
+  "lat": 50.59,
+  "lon": 3.15,
+  "name": "Sainghin-en-Mélantois"
+ },
+ "saint affrique": {
+  "lat": 43.96,
+  "lon": 2.89,
+  "name": "Saint-Affrique"
+ },
+ "saint andre les lille": {
+  "lat": 50.66,
+  "lon": 3.04,
+  "name": "Saint-André-lez-Lille"
+ },
+ "saint jans cappel": {
+  "lat": 50.78,
+  "lon": 2.72,
+  "name": "Saint-Jans-Cappel"
+ },
+ "saint jean d alcas": {
+  "lat": 43.95,
+  "lon": 2.95,
+  "name": "Saint-Jean-d’Alcas"
+ },
+ "saint leonard": {
+  "lat": 50.67,
+  "lon": 1.63,
+  "name": "Saint-Léonard"
+ },
+ "saint saulve": {
+  "lat": 50.37,
+  "lon": 3.55,
+  "name": "Saint-Saulve"
+ },
+ "saint sylvestre cappel": {
+  "lat": 50.77,
+  "lon": 2.57,
+  "name": "Saint-Sylvestre-Cappel"
+ },
+ "sameon": {
+  "lat": 50.45,
+  "lon": 3.35,
+  "name": "Saméon"
+ },
+ "sars et rosieres": {
+  "lat": 50.43,
+  "lon": 3.35,
+  "name": "Sars-et-Rosières"
+ },
+ "saulzoir": {
+  "lat": 50.2,
+  "lon": 3.34,
+  "name": "Saulzoir"
+ },
+ "seclin": {
+  "lat": 50.55,
+  "lon": 3.03,
+  "name": "Seclin"
+ },
+ "sequedin": {
+  "lat": 50.64,
+  "lon": 2.99,
+  "name": "Sequedin"
+ },
+ "steenbecque": {
+  "lat": 50.65,
+  "lon": 2.51,
+  "name": "Steenbecque"
+ },
+ "steenwerck": {
+  "lat": 50.7,
+  "lon": 2.84,
+  "name": "Steenwerck"
+ },
+ "talmont sur gironde": {
+  "lat": 45.54,
+  "lon": -0.93,
+  "name": "Talmont-sur-Gironde"
+ },
+ "templeuve": {
+  "lat": 50.52,
+  "lon": 3.26,
+  "name": "Templeuve"
+ },
+ "templeuve|B": {
+  "lat": 50.58,
+  "lon": 3.4,
+  "name": "Templeuve (B)"
+ },
+ "thimougies|B": {
+  "lat": 50.58,
+  "lon": 3.52,
+  "name": "Thimougies (B)"
+ },
+ "toufflers": {
+  "lat": 50.67,
+  "lon": 3.26,
+  "name": "Toufflers"
+ },
+ "tourcoing": {
+  "lat": 50.72,
+  "lon": 3.16,
+  "name": "Tourcoing"
+ },
+ "tournai|B": {
+  "lat": 50.61,
+  "lon": 3.39,
+  "name": "Tournai (B)"
+ },
+ "versols et lapeyre": {
+  "lat": 43.95,
+  "lon": 2.95,
+  "name": "Versols-et-Lapeyre"
+ },
+ "villeneuve d ascq": {
+  "lat": 50.62,
+  "lon": 3.15,
+  "name": "Villeneuve d’Ascq"
+ },
+ "villers au bois": {
+  "lat": 50.4,
+  "lon": 2.67,
+  "name": "Villers-au-Bois"
+ },
+ "violaines": {
+  "lat": 50.54,
+  "lon": 2.77,
+  "name": "Violaines"
+ },
+ "wambrechies": {
+  "lat": 50.68,
+  "lon": 3.05,
+  "name": "Wambrechies"
+ },
+ "wasquehal": {
+  "lat": 50.68,
+  "lon": 3.13,
+  "name": "Wasquehal"
+ },
+ "wattrelos": {
+  "lat": 50.7,
+  "lon": 3.22,
+  "name": "Wattrelos"
+ },
+ "wavrin": {
+  "lat": 50.57,
+  "lon": 2.92,
+  "name": "Wavrin"
+ },
+ "willems": {
+  "lat": 50.62,
+  "lon": 3.25,
+  "name": "Willems"
+ }
+}
