@@ -264,6 +264,11 @@
   "lon": 3.11,
   "name": "Hellemmes"
  },
+ "hem": {
+  "lat": 50.653,
+  "lon": 3.191,
+  "name": "Hem"
+ },
  "henin beaumont": {
   "lat": 50.42,
   "lon": 2.95,
