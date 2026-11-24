@@ -394,6 +394,11 @@
   "lon": 3.2,
   "name": "Marquette-en-Ostrevant"
  },
+ "marquette les lille": {
+  "lat": 50.675,
+  "lon": 3.054,
+  "name": "Marquette-lez-Lille"
+ },
  "marquillies": {
   "lat": 50.55,
   "lon": 2.88,
